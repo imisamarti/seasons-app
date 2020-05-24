@@ -20,13 +20,16 @@ class App extends React.Component {
 	}
 
 	render(){
-		return (
-			<div>
-			<div>"Latitude: " {this.state.lat}</div>
-			<br />
-			<div>"Error: " {this.state.errMessage}</div>
-			</div>
-			);
+
+		if(this.state.errMessage && !this.state.lat){
+			return <div style={{color:'red'}}> Error: {this.state.errMessage} </div>
+		} 
+
+		if(!this.state.errMessage && this.state.lat){
+			return <div style={{color:'blue'}}> Latitude: {this.state.lat} </div>
+		}
+
+		return <div>Loading... </div>
 	}
 }
 
