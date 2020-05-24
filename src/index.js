@@ -21,7 +21,7 @@ class App extends React.Component {
 		} 
 
 		if(!this.state.errMessage && this.state.lat){
-			return <div style={{color:'blue'}}> Latitude: {this.state.lat} </div>
+			return <SeasonDisplay lat={this.state.lat} /> 
 		}
 
 		return <div>Loading... </div>
