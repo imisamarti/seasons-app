@@ -10,14 +10,13 @@ class App extends React.Component {
 	state = {lat:null,errMessage:''};
 
 	componentDidMount(){
-			window.navigator.geolocation.getCurrentPosition(
+		window.navigator.geolocation.getCurrentPosition(
 			(position) => this.setState({lat: position.coords.latitude}),
 			(err) => this.setState({errMessage: err.message})
 			);
-		};
+	};
 
-	render(){
-
+	renderContent(){
 		if(this.state.errMessage && !this.state.lat){
 			return <div style={{color:'red'}}> Error: {this.state.errMessage} </div>
 		} 
@@ -27,7 +26,12 @@ class App extends React.Component {
 		}
 
 		return <Spinner message="Please accept location request"/>
+
 	}
+
+	render(){
+		return <div>{this.renderContent()}</div>
+	};
 }
 
 ReactDOM.render(<App />, document.querySelector("#root"));
